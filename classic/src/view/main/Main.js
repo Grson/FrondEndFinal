@@ -1,0 +1,118 @@
+/**
+ * This class is the main view for the application. It is specified in app.js as the
+ * "mainView" property. That setting automatically applies the "viewport"
+ * plugin causing this view to become the body element (i.e., the viewport).
+ *
+ * TODO - Replace this content of this view to suite the needs of your application.
+ */
+ Ext.define('MiAppSencha.view.main.Main', {
+    extend: 'Ext.tab.Panel',
+    xtype: 'app-main',
+
+    
+
+    requires: [
+        'Ext.plugin.Viewport',
+        'Ext.window.MessageBox',
+
+        'MiAppSencha.view.main.MainController',
+        'MiAppSencha.view.main.MainModel',
+        'MiAppSencha.view.main.List'
+    ],
+
+    controller: 'main',
+    viewModel: 'main',
+
+    ui: 'navigation',
+
+    tabBarHeaderPosition: 1,
+    titleRotation: 0,
+    tabRotation: 0,
+
+    header: {
+        layout: {
+            align: 'stretchmax'
+        },
+        title: {
+            bind: {
+                text: 'ㅤMonitor Plus®ㅤ'
+            },
+            flex: 0
+        },
+        
+                   
+        icon: 'resources/img/Plus.png',
+        
+        
+    },
+
+    tabBar: {
+        flex: 1,
+        layout: {
+            align: 'stretch',
+            overflowHandler: 'none'
+        }
+    },
+
+    responsiveConfig: {
+        tall: {
+            headerPosition: 'top'
+        },
+        wide: {
+            headerPosition: 'left'
+        }
+    },
+
+    defaults: {
+       
+        tabConfig: {
+            responsiveConfig: {
+                wide: {
+                    iconAlign: 'left',
+                    textAlign: 'left'
+                },
+                tall: {
+                    iconAlign: 'top',
+                    textAlign: 'center',
+                    width: 120
+                }
+            }
+        }
+    },
+    
+
+    items: [
+        {
+            title: 'ㅤEmpresas',
+            icon: 'resources/img/empresas.png',
+            xtype:'empresa'
+        },
+
+        {
+            title: 'ㅤEmpleados',
+            icon: 'resources/img/empleados.png',
+            xtype:'empleado'
+        },
+
+        {
+            title: 'ㅤUsuarios',
+            icon: 'resources/img/users.png',
+            xtype:'user' 
+        },
+
+        {
+            title: 'ㅤTélefonos',
+            icon: 'resources/img/telefonos.png',
+            xtype:'telefono' 
+        },
+
+
+        {
+        title: 'ㅤHome',
+        icon: 'resources/img/home.png',
+        // The following grid shares a store with the classic version's grid as well!
+        items: [{
+            xtype: 'mainlist'
+        }]
+    }]
+});
